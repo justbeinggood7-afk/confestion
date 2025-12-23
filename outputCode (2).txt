@@ -1,0 +1,27 @@
+import tkinter as tk
+import random
+
+def move_button(event):
+    new_x = random.randint(0, 200)
+    new_y = random.randint(0, 200)
+    no_button.place(x=new_x, y=new_y)
+
+def accepted():
+    label.config(text="I knew you'd say yes! ❤️")
+    no_button.destroy()
+
+root = tk.Tk()
+root.title("A small question...")
+root.geometry("300x300")
+
+label = tk.Label(root, text="Will you go out with me?", font=("Arial", 12))
+label.pack(pady=20)
+
+yes_button = tk.Button(root, text="Yes", command=accepted)
+yes_button.pack()
+
+no_button = tk.Button(root, text="No")
+no_button.place(x=130, y=100)
+no_button.bind("<Enter>", move_button)
+
+root.mainloop()
